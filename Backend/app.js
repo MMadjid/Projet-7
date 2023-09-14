@@ -7,15 +7,14 @@ const path = require('path');
 const booksRoutes = require('./routes/books');
 const usersRoutes = require('./routes/users');
 require('dotenv').config();
-const uri = "mongodb+srv://mmehal:Milan2017@cluster0.slnd30e.mongodb.net/?retryWrites=true&w=majority";
 
 const app = express();
 
 app.use(express.json());
 
 mongoose
-	.connect(uri, {
-		useNewUrlParser: true,
+.connect(process.env.MONGODB_SERV_PASSWORD, {
+	useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})
 	.then(() => console.log('Connected to MongoDB.'))
